@@ -16,6 +16,7 @@ const globalStyles = css`
   body {
     position: relative;
     min-width: 320px;
+    font-family: "Open Sans", sans-serif;
     line-height: 1.5;
   }
 `;
