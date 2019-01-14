@@ -7,11 +7,11 @@ import { GlobalStyles } from '../src/ui/theme';
 
 const RootDecorator = styled.div`
   min-height: 100vh;
-  background-color: #f0f0f0;
-  padding-top: 20px;
-  padding-right: 20px;
-  padding-bottom: 20px;
-  padding-left: 20px;
+  background-color: #2196f3;
+  padding-top: 30px;
+  padding-right: 30px;
+  padding-bottom: 30px;
+  padding-left: 30px;
 `;
 
 
