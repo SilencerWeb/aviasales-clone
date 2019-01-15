@@ -47,6 +47,7 @@ const RemoveFlightButton = styled.button`
   position: absolute;
   top: -7px;
   right: -11px;
+  z-index: 1;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -101,15 +102,7 @@ const AddFlightButton = styled.button`
 const FieldsRow = styled.div`
   position: relative;
   display: flex;
-  box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.15);
   margin-bottom: 10px;
-  
-  ${p => css`
-    
-    ${p.withoutBoxShadow && css`
-      box-shadow: none;
-    `}
-  `}
 `;
 
 const FieldsWrapper = styled.div`
@@ -191,21 +184,21 @@ export const Search = ({ className }) => {
                 Array.from({ length: flightsCount }).map((item, i, array) => {
                   return (
                     <FieldsRow key={ i }>
-                      <StyledField placeholder={ 'Origin' } isFirst isAllowedToGrow/>
-                      <StyledField placeholder={ 'Destination' } isAllowedToGrow/>
-                      <StyledField placeholder={ 'Depart date' } isLast/>
-
                       {
                         i > 0 && i === array.length - 1 && // Because we need to have this button only in the latest row but not in the first
                         <RemoveFlightButton onClick={ handleRemoveFlightButtonClick }>
                           <CloseIcon/>
                         </RemoveFlightButton>
                       }
+
+                      <StyledField placeholder={ 'Origin' } isFirst isAllowedToGrow/>
+                      <StyledField placeholder={ 'Destination' } isAllowedToGrow/>
+                      <StyledField placeholder={ 'Depart date' } isLast/>
                     </FieldsRow>
                   );
                 })
               }
-              <FieldsRow withoutBoxShadow>
+              <FieldsRow>
                 <AddFlightButton onClick={ handleAddFlightButtonClick }>Add another flight</AddFlightButton>
                 <StyledField placeholder={ 'Passengers/Class' } isFirst isLast/>
               </FieldsRow>

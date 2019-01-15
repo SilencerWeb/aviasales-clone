@@ -9,7 +9,7 @@ const StyledErrorMessage = styled(ErrorMessage)`
   top: 0;
   right: -2px;
   left: -2px;
-  z-index: 9;
+  z-index: 2;
   width: calc(100% + 4px);
   transform: translateY(-100%);
 `;
@@ -18,6 +18,7 @@ const StyledLabel = styled(Label)`
   position: absolute;
   top: -25px;
   left: 20px;
+  z-index: 1;
 `;
 
 const Wrapper = styled.div`
