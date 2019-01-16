@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "axios": "^0.18.0",
     "normalize.css": "^8.0.1",
     "react": "^16.8.0-alpha.0",
     "react-dom": "^16.8.0-alpha.0",
@@ -14,11 +15,9 @@
     "dev:webpack": "react-scripts start",
     "dev:storybook": "start-storybook -p 3001 -c .storybook",
     "dev": "concurrently 'yarn start' 'yarn storybook'",
-    
     "build:webpack": "react-scripts build",
     "build:storybook": "build-storybook -c .storybook -o build/storybook",
     "build": "yarn build:webpack && yarn build:storybook",
-    
     "start": "yarn dev:webpack",
     "storybook": "yarn dev:storybook",
     "test": "react-scripts test",
