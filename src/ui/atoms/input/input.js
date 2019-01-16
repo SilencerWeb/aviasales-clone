@@ -4,14 +4,15 @@ import styled, { css } from 'styled-components';
 export const Input = styled.input`
   width: 100%;
   font-size: 15px;
+  text-overflow: ellipsis;
   color: #262626;
   border: none;
-  box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.15);
   padding-top: 21.5px;
   padding-right: 18px;
   padding-bottom: 21.5px;
   padding-left: 18px;
   outline: none;
+  overflow: hidden;
   
   &:focus {
     box-shadow: 0 0 0 2px #ff6d00;
@@ -23,17 +24,21 @@ export const Input = styled.input`
   
   ${p => css`
     
-    ${p.isFirst && css`
+    ${p.leftBorderRadius && css`
       border-top-left-radius: 5px;
       border-bottom-left-radius: 5px;
     `}
     
-    ${p.isLast && css`
+    ${p.rightBorderRadius && css`
       border-top-right-radius: 5px;
       border-bottom-right-radius: 5px;
     `}
     
-    ${p.isError && css`
+    ${p.largePaddingRight && css`
+      padding-right: 45px;
+    `}
+    
+    ${p.error && css`
       box-shadow: 0 0 0 2px #ef5d5d;
       
       &:focus {

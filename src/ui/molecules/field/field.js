@@ -21,33 +21,64 @@ const StyledLabel = styled(Label)`
   z-index: 1;
 `;
 
+const Code = styled.span`
+  position: absolute;
+  top: 50%;
+  right: 15px;
+  z-index: 2;
+  font-size: 12px;
+  color: #90a4ae;
+  transform: translateY(-50%);
+  pointer-events: none;
+`;
+
 const Wrapper = styled.div`
   position: relative;
 `;
 
 
-export const Field = ({ className, placeholder, errorMessage, isFirst, isLast, isError }) => {
-  const [value, setValue] = React.useState('');
+export const Field = ({ id, className, value, placeholder, code, errorMessage, leftBorderRadius, rightBorderRadius, onChange, onFocus, onBlur }) => {
+  const [currentValue, setCurrentValue] = React.useState('');
   const [isFocused, setFocus] = React.useState(false);
 
-  const handleInputChange = (e) => setValue(e.target.value);
-  const handleInputFocus = () => setFocus(true);
-  const handleInputBlur = () => setFocus(false);
+  React.useEffect(() => {
+    if (value) {
+      setCurrentValue(value);
+    }
+  }, [value]);
+
+  const handleInputChange = (e) => {
+    setCurrentValue(e.target.value);
+    onChange && onChange(e.target.value);
+  };
+
+  const handleInputFocus = () => {
+    setFocus(true);
+    onFocus && onFocus();
+  };
+
+  const handleInputBlur = () => {
+    setFocus(false);
+    onBlur && onBlur();
+  };
 
   return (
     <Wrapper className={ className }>
-      { isError && <StyledErrorMessage>{ errorMessage }</StyledErrorMessage> }
+      { errorMessage && <StyledErrorMessage>{ errorMessage }</StyledErrorMessage> }
       <Input
-        value={ value }
+        id={ id }
+        value={ currentValue }
         placeholder={ isFocused ? '' : placeholder }
-        isFirst={ isFirst }
-        isLast={ isLast }
-        isError={ isError }
+        leftBorderRadius={ leftBorderRadius }
+        rightBorderRadius={ rightBorderRadius }
+        largePaddingRight={ !!code }
+        error={ !!errorMessage }
         onChange={ handleInputChange }
         onFocus={ handleInputFocus }
         onBlur={ handleInputBlur }
       />
-      <StyledLabel isVisible={ isFocused || value.length > 0 }>{ placeholder }</StyledLabel>
+      <StyledLabel htmlFor={ id } visible={ isFocused || currentValue.length > 0 }>{ placeholder }</StyledLabel>
+      { code && <Code>{ code }</Code> }
     </Wrapper>
   );
 };

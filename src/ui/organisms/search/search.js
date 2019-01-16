@@ -2,7 +2,8 @@ import * as React from 'react';
 import styled, { css } from 'styled-components';
 
 import { Field } from 'ui/molecules';
-import { PlaneIcon, SingleRouteIcon, MultiRouteIcon, CloseIcon } from 'ui/outlines';
+import { CityField } from 'ui/organisms';
+import { SearchButtonPlaneIcon, SingleRouteIcon, MultiRouteIcon, CloseIcon } from 'ui/outlines';
 
 import { rgba } from 'utils';
 
@@ -27,7 +28,8 @@ const RouteTypeSwitcher = styled.button`
   }
 `;
 
-const StyledField = styled(Field)`
+const StyledCityField = styled(CityField)`
+  width: 25%;
   padding-right: 2px;
   
   &:last-child {
@@ -36,7 +38,23 @@ const StyledField = styled(Field)`
   
   ${p => css`
     
-    ${p.isAllowedToGrow && css`
+    ${p.allowedToGrow && css`
+      flex-grow: 1;
+    `}
+  `}
+`;
+
+const StyledField = styled(Field)`
+  width: 25%;
+  padding-right: 2px;
+  
+  &:last-child {
+    padding-right: 0;
+  }
+  
+  ${p => css`
+    
+    ${p.allowedToGrow && css`
       flex-grow: 1;
     `}
   `}
@@ -172,11 +190,11 @@ export const Search = ({ className }) => {
         {
           routeType === 'single' ?
             <FieldsRow>
-              <StyledField placeholder={ 'Origin' } isFirst/>
-              <StyledField placeholder={ 'Destination' }/>
-              <StyledField placeholder={ 'Depart date' }/>
-              <StyledField placeholder={ 'Return date' }/>
-              <StyledField placeholder={ 'Passengers/Class' } isLast/>
+              <StyledCityField id={ 'origin-single' } placeholder={ 'Origin' } leftBorderRadius/>
+              <StyledCityField id={ 'destination-single' } placeholder={ 'Destination' }/>
+              <StyledField id={ 'depart-date-single' } placeholder={ 'Depart date' }/>
+              <StyledField id={ 'return-date-single' } placeholder={ 'Return date' }/>
+              <StyledField id={ 'passengers-class-single' } placeholder={ 'Passengers/Class' } rightBorderRadius/>
             </FieldsRow>
             :
             <React.Fragment>
@@ -191,16 +209,16 @@ export const Search = ({ className }) => {
                         </RemoveFlightButton>
                       }
 
-                      <StyledField placeholder={ 'Origin' } isFirst isAllowedToGrow/>
-                      <StyledField placeholder={ 'Destination' } isAllowedToGrow/>
-                      <StyledField placeholder={ 'Depart date' } isLast/>
+                      <StyledCityField id={ `origin-multi-${i}` } placeholder={ 'Origin' } leftBorderRadius allowedToGrow/>
+                      <StyledCityField id={ `destination-multi-${i}` } placeholder={ 'Destination' } allowedToGrow/>
+                      <StyledField id={ `depart-date-multi-${i}` } placeholder={ 'Depart date' } rightBorderRadius/>
                     </FieldsRow>
                   );
                 })
               }
               <FieldsRow>
                 <AddFlightButton onClick={ handleAddFlightButtonClick }>Add another flight</AddFlightButton>
-                <StyledField placeholder={ 'Passengers/Class' } isFirst isLast/>
+                <StyledField placeholder={ 'Passengers/Class' } leftBorderRadius rightBorderRadius/>
               </FieldsRow>
             </React.Fragment>
         }
@@ -223,7 +241,7 @@ export const Search = ({ className }) => {
 
       <SearchButton>
         <span>Search</span>
-        <PlaneIcon/>
+        <SearchButtonPlaneIcon/>
       </SearchButton>
     </Wrapper>
   );

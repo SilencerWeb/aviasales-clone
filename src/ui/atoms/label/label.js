@@ -15,7 +15,7 @@ export const Label = styled.label`
   
   ${p => css`
     
-    ${p.isVisible && css`
+    ${p.visible && css`
       transform: translateY(0);
       transition: transform 0.3s cubic-bezier(0, 0.6, 0, 1), opacity 0.3s linear, -webkit-transform 0.3s cubic-bezier(0, 0.6, 0, 1);
       opacity: 1;

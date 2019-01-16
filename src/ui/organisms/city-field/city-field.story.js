@@ -1,22 +1,21 @@
 import * as React from 'react';
 import { storiesOf } from '@storybook/react';
 
+import { CityField } from './city-field';
 
-import { Field } from './field';
 
-
-storiesOf('Field', module)
+storiesOf('CityField', module)
   .add('Default', () => (
-    <Field placeholder={ `Hi! I'm input!` }/>
+    <CityField placeholder={ `Hi! I'm input!` }/>
   ))
   .add('Left Border Radius', () => (
-    <Field placeholder={ `Hi! I'm input!` } leftBorderRadius/>
+    <CityField placeholder={ `Hi! I'm input!` } leftBorderRadius/>
   ))
   .add('Right Border Radius', () => (
-    <Field placeholder={ `Hi! I'm input!` } rightBorderRadius/>
+    <CityField placeholder={ `Hi! I'm input!` } rightBorderRadius/>
   ))
   .add('Error', () => (
-    <Field
+    <CityField
       placeholder={ `Hi! I'm input!` }
       errorMessage={ `Hi! I'm error message!` }
     />

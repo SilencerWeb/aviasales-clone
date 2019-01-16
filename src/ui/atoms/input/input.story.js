@@ -8,12 +8,12 @@ storiesOf('Input', module)
   .add('Default', () => (
     <Input placeholder={ `Hi! I'm input!` }/>
   ))
-  .add('First', () => (
-    <Input placeholder={ `Hi! I'm input!` } isFirst/>
+  .add('Left Border Radius', () => (
+    <Input placeholder={ `Hi! I'm input!` } leftBorderRadius/>
   ))
-  .add('Last', () => (
-    <Input placeholder={ `Hi! I'm input!` } isLast/>
+  .add('Right Border Radius', () => (
+    <Input placeholder={ `Hi! I'm input!` } rightBorderRadius/>
   ))
   .add('Error', () => (
-    <Input placeholder={ `Hi! I'm input!` } isError/>
+    <Input placeholder={ `Hi! I'm input!` } error/>
   ));

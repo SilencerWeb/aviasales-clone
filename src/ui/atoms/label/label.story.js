@@ -8,9 +8,9 @@ import { Label } from './label';
 storiesOf('Label', module)
   .addDecorator(withKnobs)
   .add('Default', () => {
-    const isVisible = boolean('isVisible', true);
+    const visible = boolean('Visible?', true);
 
     return (
-      <Label isVisible={ isVisible }>Hi! I'm label!</Label>
+      <Label visible={ visible }>Hi! I'm label!</Label>
     );
   });
